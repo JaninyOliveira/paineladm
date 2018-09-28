@@ -1,0 +1,5 @@
+com\bambole\paineladm\persistence\LoginPersistence.class
+com\bambole\paineladm\persistence\LoginPersistenceImpl.class
+com\bambole\paineladm\ejb\Login.class
+com\bambole\paineladm\ejb\LoginBean.class
+com\bambole\paineladm\model\Usuario.class
