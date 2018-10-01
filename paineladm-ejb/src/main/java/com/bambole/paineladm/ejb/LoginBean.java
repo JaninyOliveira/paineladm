@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import com.bambole.paineladm.model.Usuario;
 import com.bambole.paineladm.persistence.LoginPersistence;
 
-@Stateless
+@Stateless(mappedName = "LoginBean")
 public class LoginBean implements Login{
 	
 	@Inject

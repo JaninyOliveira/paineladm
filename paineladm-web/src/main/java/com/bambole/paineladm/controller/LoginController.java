@@ -16,7 +16,7 @@ public class LoginController implements Serializable {
 	private String usuario;
 	private String senha;
 	
-	@EJB
+	@EJB(beanName = "LoginBean")
 	private Login login;
 
 	@PostConstruct
@@ -50,6 +50,14 @@ public class LoginController implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 }
