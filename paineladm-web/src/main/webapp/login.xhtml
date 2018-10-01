@@ -13,9 +13,9 @@
 			style="margin-bottom:20px">
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Usuário:" />
-				<h:inputText value="#{loginController.usuario.login}" size="20" />
+				<h:inputText value="#{loginController.usuario}" size="20" />
 				<h:outputLabel value="Senha:" />
-				<h:inputSecret value="#{loginController.usuario.senha}" size="20" />
+				<h:inputSecret value="#{loginController.senha}" size="20" />
 			</h:panelGrid>
 			<h:commandButton value="Logar" action="#{loginController.logar}" />
 			<h:messages />
