@@ -1,5 +1,9 @@
-com\bambole\paineladm\persistence\LoginPersistence.class
 com\bambole\paineladm\persistence\LoginPersistenceImpl.class
-com\bambole\paineladm\ejb\Login.class
 com\bambole\paineladm\ejb\LoginBean.class
 com\bambole\paineladm\model\Usuario.class
+com\bambole\paineladm\ejb\Login.class
+com\bambole\paineladm\ejb\Cadastro.class
+com\bambole\paineladm\persistence\CadastroPersistence.class
+com\bambole\paineladm\persistence\LoginPersistence.class
+com\bambole\paineladm\persistence\CadastroPersistenceImpl.class
+com\bambole\paineladm\ejb\CadastroBean.class

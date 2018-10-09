@@ -9,7 +9,6 @@ import javax.faces.bean.ManagedBean;
 import com.bambole.paineladm.ejb.Login;
 
 @ManagedBean(name = "loginController")
-
 public class LoginController implements Serializable {
 
 	private static final long serialVersionUID = 4011293576803461572L;
@@ -30,9 +29,9 @@ public class LoginController implements Serializable {
 	public String logar() {
 		Boolean	logado = login.logar(usuario, senha);
 		if (logado){
-			return "sucesso";
+			return login.verificaStatus(usuario, senha);
 		}else{
-			return "falha";
+			return "errologin";
 		}
 	}
 

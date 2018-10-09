@@ -1,10 +1,37 @@
 package com.bambole.paineladm.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usuario")
+@NamedQueries({ 
+	@NamedQuery(name = "Usuario.findByLoginSenha", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")
+})
 public class Usuario {
-	private String login = "";
-	private String senha = "";
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
+
+	@Column(name = "login", unique = true, nullable = false)
+	private String login;
+
+	@Column(name = "senha", unique = true, nullable = false)
+	private String senha;
+
+	@Column(name = "admin", unique = false, nullable = true)
 	private Boolean admin;
+
+	@Column(name = "contratante", unique = false, nullable = true)
 	private Boolean contratante;
+
+	@Column(name = "funcBambole", unique = false, nullable = true)
 	private Boolean funcBambole;
 
 	public Usuario() {
@@ -58,6 +85,14 @@ public class Usuario {
 
 	public void setFuncBambole(Boolean funcBambole) {
 		this.funcBambole = funcBambole;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 }
