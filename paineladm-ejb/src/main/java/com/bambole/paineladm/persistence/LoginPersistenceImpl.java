@@ -1,5 +1,7 @@
 package com.bambole.paineladm.persistence;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -16,8 +18,12 @@ public class LoginPersistenceImpl implements LoginPersistence{
 		query.setParameter("login", usuario);
 		query.setParameter("senha", senha);
 		
-		Usuario u = query.getSingleResult();
-		return u;
+		List<Usuario> u = query.getResultList();
+		
+		if(u == null || u.isEmpty()) {
+			return null;
+		}
+		return u.get(0);
 	}
 
 }

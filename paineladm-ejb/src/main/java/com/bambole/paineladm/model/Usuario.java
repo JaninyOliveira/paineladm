@@ -1,5 +1,8 @@
 package com.bambole.paineladm.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,7 +18,12 @@ import javax.persistence.Table;
 @NamedQueries({ 
 	@NamedQuery(name = "Usuario.findByLoginSenha", query = "SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")
 })
-public class Usuario {
+public class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 424541672691355778L;
+
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
 	private Integer id;
@@ -33,6 +42,9 @@ public class Usuario {
 
 	@Column(name = "funcBambole", unique = false, nullable = true)
 	private Boolean funcBambole;
+	
+	@OneToMany(mappedBy = "usuario")
+	private List<Log> logs;
 
 	public Usuario() {
 		super();

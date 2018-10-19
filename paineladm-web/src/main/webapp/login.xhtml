@@ -15,11 +15,11 @@
 				<p:outputLabel for="usuario" value="Usuário:" />
 				<p:inputText id="usuario" value="#{loginController.usuario}"
 					size="20" required="true" label="usuario" />
-				<p:message for="usuario"/>
+				<p:message for="usuario" />
 				<p:outputLabel for="senha" value="Senha:" />
 				<p:password id="senha" value="#{loginController.senha}" size="20"
 					required="true" label="senha" />
-				<p:message for="senha"/>
+				<p:message for="senha" />
 			</h:panelGrid>
 			<h:commandButton value="Logar" action="#{loginController.logar}"
 				margin="10" />

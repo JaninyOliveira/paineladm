@@ -2,6 +2,8 @@ package com.bambole.paineladm.persistence;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.bambole.paineladm.model.Festa;
 import com.bambole.paineladm.model.Usuario;
 
 public class CadastroPersistenceImpl implements CadastroPersistence {

@@ -1,8 +1,12 @@
 package com.bambole.paineladm.controller;
 
+import java.util.Date;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import com.bambole.paineladm.ejb.Cadastro;
 
@@ -31,8 +35,17 @@ public class CadastroController {
 	}
 
 	public String cadastraNovo() {
-		cadastro.cadastrar(usuario, senha, tipo);
-		return "novousuario";
+		try {
+			cadastro.cadastrar(usuario, senha, tipo);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+					"Sucesso! Usuário cadastrado!", "Sucesso! Usuário cadastrado!"));
+			return "login";
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, e.getMessage(), e.getMessage()));
+			return "novousuario";
+		}
+
 	}
 
 	public String getUsuario() {

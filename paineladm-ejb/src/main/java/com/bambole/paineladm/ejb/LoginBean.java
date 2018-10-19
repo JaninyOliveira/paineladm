@@ -12,20 +12,34 @@ public class LoginBean implements Login {
 	@Inject
 	private LoginPersistence loginPersistence;
 
-	public Boolean logar(String usuario, String senha) {
+	public Usuario logar(String usuario, String senha) throws Exception {
 		Usuario usuarioObj = loginPersistence.logar(usuario, senha);
-		return usuarioObj != null;
+		if (usuarioObj == null) {
+			throw new Exception(
+					"Usuário não Existente ou Senha Inválida! Favor efetuar o cadastro ou verifique a senha informada!");
+		}
+		
+		return usuarioObj;
+
 	}
 
 	public String verificaStatus(String usuario, String senha) {
 		Usuario usuarioObj = loginPersistence.logar(usuario, senha);
 
 		if (usuarioObj.getAdmin()) {
-			return "admin";
+			return "restricted/admin";
 		} else if (usuarioObj.getContratante()) {
-			return "contratante";
+			return "restricted/contratante";
 		} else {
-			return "funcBambole";
+			return "restricted/funcBambole";
+		}
+
+	}
+
+	public void verificaUsuario(String usuario, String senha) throws Exception {
+		Usuario u = loginPersistence.logar(usuario, senha);
+		if (u != null) {
+			throw new Exception("Usuário já cadastrado!");
 		}
 
 	}
