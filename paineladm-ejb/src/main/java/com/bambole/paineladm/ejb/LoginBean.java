@@ -27,11 +27,11 @@ public class LoginBean implements Login {
 		Usuario usuarioObj = loginPersistence.logar(usuario, senha);
 
 		if (usuarioObj.getAdmin()) {
-			return "restricted/admin";
+			return "/restricted/admin?faces-redirect=true";
 		} else if (usuarioObj.getContratante()) {
-			return "restricted/contratante";
+			return "/restricted/contratante?faces-redirect=true";
 		} else {
-			return "restricted/funcBambole";
+			return "/restricted/funcBambole?faces-redirect=true";
 		}
 
 	}

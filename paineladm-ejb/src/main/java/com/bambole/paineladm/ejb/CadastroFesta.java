@@ -1,6 +1,7 @@
 package com.bambole.paineladm.ejb;
 
 import java.util.Date;
+import java.util.List;
 
 import com.bambole.paineladm.model.Cliente;
 import com.bambole.paineladm.model.Festa;
@@ -11,5 +12,5 @@ public interface CadastroFesta {
 
 	public Cliente buscarCliente(String cpf) throws Exception;
 
-
+	public List<Festa> exibirListaFesta();
 }

@@ -5,11 +5,11 @@
 <application>
   <display-name>paineladm-ear</display-name>
   <module>
-    <ejb>paineladm-ejb-0.0.1-SNAPSHOT.jar</ejb>
+    <ejb>paineladm-ejb-1.0.0.jar</ejb>
   </module>
   <module>
     <web>
-      <web-uri>paineladm-web-0.0.1-SNAPSHOT.war</web-uri>
+      <web-uri>paineladm-web-1.0.0.war</web-uri>
       <context-root>/paineladm-web</context-root>
     </web>
   </module>

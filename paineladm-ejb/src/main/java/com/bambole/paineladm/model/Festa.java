@@ -9,12 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "festa")
-//@NamedQueries({
-//		@NamedQuery(name = "Festa.findByCliente", query = "SELECT f,c FROM Festa, Cliente f WHERE f.cliente_id = :c.cliente.id") })
+@NamedQueries({
+		@NamedQuery(name = "Festa.all", query = "SELECT f FROM Festa f") })
 public class Festa implements Serializable {
 
 	private static final long serialVersionUID = -3310428560649134542L;

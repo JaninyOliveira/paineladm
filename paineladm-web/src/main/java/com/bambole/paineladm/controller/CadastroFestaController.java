@@ -1,6 +1,8 @@
 package com.bambole.paineladm.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -11,6 +13,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import com.bambole.paineladm.ejb.CadastroFesta;
 import com.bambole.paineladm.model.Cliente;
+import com.bambole.paineladm.model.Festa;
 
 @ManagedBean(name = "cadastroFestaController")
 public class CadastroFestaController {
@@ -26,7 +29,8 @@ public class CadastroFestaController {
 	private double valor;
 	private String observacoes;
 	private Cliente cliente;
-
+	private List<Festa> festas;
+	
 	@EJB(beanName = "CadastroFestaBean")
 	private CadastroFesta cadastroFesta;
 
@@ -44,21 +48,21 @@ public class CadastroFestaController {
 		observacoes = "";
 		cpf = "";
 		cliente = null;
-
+		festas = cadastroFesta.exibirListaFesta();
 	}
 
 	public String direcionaCadastroFesta() {
 
-		return "/restricted/cadastro-festa.xhtml";
+		return "/restricted/cadastro-festa.xhtml?faces-redirect=true";
 	}
 
 	public String cadastraFesta() {
 
 		try {
 			cliente = cadastroFesta.buscarCliente(cpf);
-			cadastroFesta.cadastrarFesta(cliente, tipoFesta, temaFesta, numConvidados,
-					conviteVirtual, dataFesta, valor, observacoes);
-			
+			cadastroFesta.cadastrarFesta(cliente, tipoFesta, temaFesta, numConvidados, conviteVirtual, dataFesta, valor,
+					observacoes);
+
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 					"Sucesso! Festa cadastrada!", "Sucesso! Festa cadastrada!"));
 			return "sucesso";
@@ -68,8 +72,8 @@ public class CadastroFestaController {
 			return "restricted/cadastro-festa.xhtml";
 		}
 	}
-	
-	public void buscarCliente(AjaxBehaviorEvent event){
+
+	public void buscarCliente(AjaxBehaviorEvent event) {
 		try {
 			cliente = cadastroFesta.buscarCliente(cpf);
 			setCpf(cliente.getCpf());
@@ -184,6 +188,14 @@ public class CadastroFestaController {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public List<Festa> getFestas() {
+		return festas;
+	}
+
+	public void setFestas(List<Festa> festas) {
+		this.festas = festas;
 	}
 
 }

@@ -1,2 +1,6 @@
 com\bambole\paineladm\controller\CadastroController.class
+com\bambole\paineladm\controller\CadastroClienteController.class
+com\bambole\paineladm\session\SessionContext.class
+com\bambole\paineladm\controller\CadastroFestaController.class
 com\bambole\paineladm\controller\LoginController.class
+com\bambole\paineladm\session\LoginFilter.class

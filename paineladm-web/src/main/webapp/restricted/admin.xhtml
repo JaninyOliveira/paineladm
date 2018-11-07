@@ -1,25 +1,50 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Admin</title>
-</h:head>
-<h:body>
-	<h:form>
-		<p:panel id="basic" header="Admin">
-			<h:panelGrid columns="2" cellpadding="10">
-				<h:outputText value="The story begins as Don Vito Corleone..." />
-				
-				<h:commandButton value="Cadastrar Festa"
-				action="#{cadastroFestaController.direcionaCadastroFesta}" margin="10" />
-				
-				<h:commandButton value="Cadastrar Cliente"
-				action="#{cadastroClienteController.cadastrar}" margin="10" />
-			</h:panelGrid>
-		</p:panel>
-	</h:form>
-</h:body>
-</html>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/restricted/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:dataScroller value="#{cadastroFestaController.festas}" var="festa"
+				chunkSize="10">
+				<f:facet name="header">
+                	Festas
+                </f:facet>
+				<h:panelGrid columns="6" style="width:100%">
+					<p:outputPanel>
+						<p:panelGrid columns="6" layout="grid" cellpadding="5">
+							<h:outputText value="Contratante:" style="font-weight: bold" />
+							<h:outputText value="#{festa.cliente.nome}" />
+							<h:outputText value="Celular:" style="font-weight: bold" />
+							<h:outputText value="#{festa.cliente.celular}" />
+							<h:outputText value="Email:" style="font-weight: bold" />
+							<h:outputText value="#{festa.cliente.email}" />
+							<h:outputText value="Tipo de Festa:" style="font-weight: bold" />
+							<h:outputText value="#{festa.tipoFesta}" />
+							<h:outputText value="Tema da Festa:" style="font-weight: bold" />
+							<h:outputText value="#{festa.temaFesta}" />
+							<h:outputText value="Número de Convidados:"
+								style="font-weight: bold" />
+							<h:outputText value="#{festa.numConvidados}" />
+							<h:outputText value="Possui convite virtual?"
+								style="font-weight: bold" />
+							<h:outputText value="#{festa.conviteVirtual}" />
+							<h:outputText value="Data da Festa:" style="font-weight: bold" />
+							<h:outputText value="#{festa.dataFesta}">
+								<f:convertDateTime pattern="dd/MM/yyyy HH:mm"
+									timeZone="GMT-03:00" />
+							</h:outputText>
+							<h:outputText value="Valor: " style="font-weight: bold" />
+							<h:outputText value="#{festa.valor}" />
+							<h:outputText value="Observações: " style="font-weight: bold" />
+							<h:outputText value="#{festa.observacoes}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</h:panelGrid>
+			</p:dataScroller>
+		</h:form>
+	</ui:define>
+</ui:composition>

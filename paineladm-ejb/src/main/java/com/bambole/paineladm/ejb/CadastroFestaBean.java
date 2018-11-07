@@ -1,6 +1,7 @@
 package com.bambole.paineladm.ejb;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -58,4 +59,8 @@ public class CadastroFestaBean implements CadastroFesta {
 		return cliente;
 	}
 	
-}
+	public List<Festa> exibirListaFesta(){
+		
+		return cadastroFestaPersistence.listarFestas();
+	}
+} 

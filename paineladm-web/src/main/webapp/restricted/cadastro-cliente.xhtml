@@ -1,56 +1,55 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Cadastro de Cliente</title>
-</h:head>
-<h:body>
-	<h:form>
-		<p:panel id="basic" header="Cadastro de Cliente">
-			<p:messages id="msgs" />
-			<h:panelGrid columns="1" cellpadding="5">
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="nome" value="Nome:" />
-					<p:inputText id="nome" value="#{cadastroClienteController.nome}"
-						required="true" size="20" />
-					<p:message for="nome" />
-				</h:panelGrid>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/restricted/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:panel id="basic" header="Cadastro de Cliente">
+				<p:messages id="msgs" />
+				<h:panelGrid columns="1" cellpadding="5">
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="nome" value="Nome:" />
+						<p:inputText id="nome" value="#{cadastroClienteController.nome}"
+							required="true" size="20" />
+						<p:message for="nome" />
+					</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="cpf" value="CPF: " />
-					<p:inputText id="cpf" value="#{cadastroClienteController.cpf}"
-						required="true" size="20" />
-					<p:message for="cpf" mask="999.999.999-99" />
-				</h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="cpf" value="CPF: " />
+						<p:inputText id="cpf" value="#{cadastroClienteController.cpf}"
+							required="true" size="20" />
+						<p:message for="cpf" mask="999.999.999-99" />
+					</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="celular" value="Celular:" />
-					<p:inputMask id="celular"
-						value="#{cadastroClienteController.celular}"
-						mask="(99) 99999-9999" />
-				</h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="celular" value="Celular:" />
+						<p:inputMask id="celular"
+							value="#{cadastroClienteController.celular}"
+							mask="(99) 99999-9999" />
+					</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="telefone" value="Telefone:" />
-					<p:inputMask id="telefone"
-						value="#{cadastroClienteController.telefone}"
-						mask="(99) 9999-9999" />
-				</h:panelGrid>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="telefone" value="Telefone:" />
+						<p:inputMask id="telefone"
+							value="#{cadastroClienteController.telefone}"
+							mask="(99) 9999-9999" />
+					</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="email" value="Email:" />
-					<p:inputText id="email" value="#{cadastroClienteController.email}"
-						required="true" size="20" />
-					<p:message for="email" />
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="email" value="Email:" />
+						<p:inputText id="email" value="#{cadastroClienteController.email}"
+							required="true" size="20" />
+						<p:message for="email" />
+					</h:panelGrid>
 				</h:panelGrid>
-			</h:panelGrid>
-			<h:commandButton value="Cadastrar Cliente"
-				action="#{cadastroClienteController.cadastrarNovo}" />
-			<h:messages />
-		</p:panel>
-	</h:form>
-</h:body>
-</html>
+				<h:commandButton value="Cadastrar Cliente"
+					action="#{cadastroClienteController.cadastrarNovo}" />
+				<h:messages />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

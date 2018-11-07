@@ -1,102 +1,103 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Cadastrar Festa</title>
-</h:head>
-<h:body>
-	<h:form>
-		<p:panel id="basic" header="Cadastrar Festa">
-			<p:messages id="msgs" />
-			<h:panelGrid id="grid" columns="1" cellpadding="5">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/restricted/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+			<p:panel id="basic" header="Cadastrar Festa">
+				<p:messages id="msgs" />
+				<h:panelGrid id="grid" columns="1" cellpadding="5">
 
-				<h:panelGrid id="gridCLiente" columns="1" cellpadding="5">
-				
+					<h:panelGrid id="gridCLiente" columns="1" cellpadding="5">
+
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:outputLabel for="cpf" value="CPF do CLiente:" />
+							<p:inputText id="cpf" value="#{cadastroFestaController.cpf}"
+								size="20" label="cpf">
+								<p:ajax event="blur"
+									listener="#{cadastroFestaController.buscarCliente}"
+									update="gridCLiente, msgs" />
+							</p:inputText>
+							<p:message for="cpf" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:outputLabel for="contratante" value="Contratante:" />
+							<p:inputText id="contratante"
+								value="#{cadastroFestaController.contratante}" size="20"
+								label="contratante" />
+							<p:message for="contratante" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:outputLabel for="celular" value="Celular:" />
+							<p:inputMask id="celular"
+								value="#{cadastroFestaController.celular}"
+								mask="(99) 99999-9999" />
+						</h:panelGrid>
+
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="email" value="Email:" />
+							<p:inputText id="email" value="#{cadastroFestaController.email}">
+							</p:inputText>
+						</h:panelGrid>
+					</h:panelGrid>
+
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="cpf" value="CPF do CLiente:" />
-						<p:inputText id="cpf"
-							value="#{cadastroFestaController.cpf}" size="20"
-							label="cpf">
-							<p:ajax event="blur" listener="#{cadastroFestaController.buscarCliente}" update="gridCLiente, msgs"/>
+						<h:outputLabel for="tipofesta" value="Tipo de Festa:" />
+						<p:inputText id="tipoFesta"
+							value="#{cadastroFestaController.tipoFesta}">
 						</p:inputText>
-						<p:message for="cpf" />
 					</h:panelGrid>
-					
+
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="contratante" value="Contratante:" />
-						<p:inputText id="contratante"
-							value="#{cadastroFestaController.contratante}" size="20"
-							label="contratante" />
-						<p:message for="contratante" />
+						<p:outputLabel for="temaFesta" value="Tema da Festa:" />
+						<p:inputText id="temaFesta"
+							value="#{cadastroFestaController.temaFesta}" size="20"
+							label="temaFesta" />
 					</h:panelGrid>
-	
+
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:outputLabel for="celular" value="Celular:" />
-						<p:inputMask id="celular"
-							value="#{cadastroFestaController.celular}" mask="(99) 99999-9999" />
+						<p:outputLabel for="numConvidados" value="Número de Convidados:" />
+						<p:inputText id="numConvidados"
+							value="#{cadastroFestaController.numConvidados}" />
+						<p:slider for="numConvidados" />
 					</h:panelGrid>
-	
+
 					<h:panelGrid columns="2" cellpadding="5">
-						<h:outputLabel for="email" value="Email:" />
-						<p:inputText id="email" value="#{cadastroFestaController.email}">
-						</p:inputText>
+						<h:outputText value="Possui convite virtual:" />
+						<p:selectBooleanButton id="conviteVirtual"
+							value="#{cadastroFestaController.conviteVirtual}" onLabel="Yes"
+							offLabel="No" style="width:60px" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="dataFesta" value="Data e Horário da Festa:" />
+						<p:calendar id="dataFesta"
+							value="#{cadastroFestaController.dataFesta}"
+							pattern="dd/MM/yyyy HH:mm:ss" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="valor" value="Valor da Festa: " />
+						<p:inputText id="valor" value="#{cadastroFestaController.valor}"
+							size="20" label="valor" />
+					</h:panelGrid>
+
+					<h:panelGrid columns="2" cellpadding="5">
+						<h3>Observações:</h3>
+						<p:inputTextarea id="observacoes" rows="6" cols="33"
+							value="#{cadastroFestaController.observacoes}" />
 					</h:panelGrid>
 				</h:panelGrid>
 
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputLabel for="tipofesta" value="Tipo de Festa:" />
-					<p:inputText id="tipoFesta"
-						value="#{cadastroFestaController.tipoFesta}">
-					</p:inputText>
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="temaFesta" value="Tema da Festa:" />
-					<p:inputText id="temaFesta"
-						value="#{cadastroFestaController.temaFesta}" size="20"
-						label="temaFesta" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="numConvidados" value="Número de Convidados:" />
-					<p:inputText id="numConvidados"
-						value="#{cadastroFestaController.numConvidados}" />
-					<p:slider for="numConvidados" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<h:outputText value="Possui convite virtual:" />
-					<p:selectBooleanButton id="conviteVirtual"
-						value="#{cadastroFestaController.conviteVirtual}" onLabel="Yes"
-						offLabel="No" style="width:60px" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="dataFesta" value="Data e Horário da Festa:" />
-					<p:calendar id="dataFesta"
-						value="#{cadastroFestaController.dataFesta}"
-						pattern="dd/MM/yyyy HH:mm:ss" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<p:outputLabel for="valor" value="Valor da Festa: " />
-					<p:inputText id="valor" value="#{cadastroFestaController.valor}"
-						size="20" label="valor" />
-				</h:panelGrid>
-
-				<h:panelGrid columns="2" cellpadding="5">
-					<h3>Observações:</h3>
-					<p:inputTextarea id="observacoes" rows="6" cols="33"
-						value="#{cadastroFestaController.observacoes}" />
-				</h:panelGrid>
-			</h:panelGrid>
-
-			<h:commandButton value="Cadastrar Festa"
-				action="#{cadastroFestaController.cadastraFesta}" margin="10" />
-		</p:panel>
-	</h:form>
-</h:body>
-</html>
+				<h:commandButton value="Cadastrar Festa"
+					action="#{cadastroFestaController.cadastraFesta}" margin="10" />
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

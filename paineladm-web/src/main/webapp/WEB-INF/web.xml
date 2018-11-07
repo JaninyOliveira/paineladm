@@ -23,7 +23,7 @@
 	</welcome-file-list>
 	<error-page>
 		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
-		<location>/index.xhtml</location>
+		<location>/login.xhtml</location>
 	</error-page>
 	<session-config>
 		<session-timeout>60</session-timeout>
